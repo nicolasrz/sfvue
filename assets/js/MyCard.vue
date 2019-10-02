@@ -1,5 +1,5 @@
 <template>
-  <div class="card" style="width: 18rem;" v-if="contact != null">
+  <div class="card" style="width: 18rem;" v-if="contact.firstname != ''">
     <img src class="card-img-top" alt />
     <div class="card-body">
       <h5 class="card-title">{{ contact.firstname }} {{ contact.lastname }}</h5>
@@ -32,7 +32,11 @@ export default {
   },
   methods: {
     deleteContact() {
-      this.contact = null;
+      this.contact = {
+        firstname: "",
+        lastname: "",
+        description: ""
+      };
       Bus.$emit("delete-contact", this.index);
     }
   }
