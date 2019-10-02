@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}Welcome!
+            {% endblock %}
+        </title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    </head>
+    <body>
+        {% block body %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Contact</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home
+                                <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+
+            <div id="app" class="container mt-5">
+
+                <div class="row justify-content-center">
+                    <div class="col-4 ">
+                        <h4 class="text-center">Ajouter un contact</h4>
+                        <div class="form-group">
+                            <label for="firstname">Prénom</label>
+                            <input type="text" class="form-control" v-model="firstname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="lastname">Nom</label>
+                            <input type="text" class="form-control" v-model="lastname">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" v-model="description"></textarea>
+                        </div>
+                        <button class="btn btn-primary" @click="addContact">Ajouter</button>
+                    </div>
+                </div>
+
+                <div class="row mt-5 justify-content-center">
+                    <div class="col-5">
+
+                        <ul class="list-group">
+                            <li class="list-group-item" style="cursor:pointer" v-for="(value, index) in contacts" @click="onClickContact(index)">
+                                ${ value.firstname } - ${ value.lastname }</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="col-5">
+                        {# <my-card person="{{ person | json_encode() }}"></my-card> #}
+                        <my-card></my-card>
+
+
+                    </div>
+                </div>
+
+                <div class="row">
+                    <my-count inline-template :count="10">
+                        <div>
+                            <label>
+                                Un template inline ici avec un compteur ${newCount}
+                            </label>
+                            <button class="btn btn-info" @click="increment">Add</button>
+                        </div>
+                    </my-count>
+                </div>
+            </div>
+
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('build/app.js')}}"></script>
+        {% endblock %}
+    </body>
+</html></body></html></body></html>
